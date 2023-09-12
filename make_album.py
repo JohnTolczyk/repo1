@@ -1,32 +1,41 @@
 #make_album
 
-records = []
+# records = []
 
-def make_album(artist_name,title,number_of_songs):
-    album = {'Name': band_name , 'Album' : record_name}
+def make_album(artist_name,album_title,number_of_songs=None):
+    albumdict = {
+        'Name': artist_name.title(),
+        'Album' : album_title.title()
+          }
     if number_of_songs:
-        album['Number of Songs'] = songs
-    records.append(album)
-    return album
+        albumdict['Number of Songs'] = number_of_songs
+    return albumdict
     
+# cock_prompts
+title_prompt = "\nWhat album are you thinking of?: "
+artist_prompt = "Who's the artist?:  "
+songs_prompt = "How many songs are on that album?: "
+
+# Let the user know how to fuck off.
+print("Enter 'quit' at any time to stop.")
 
 while True:
-    band_name = input("\nEnter name of band/artist: ")
-    print("enter 'q' at anytime to quit.")
-    if band_name == 'q':
-        break
-        
-
-    record_name = input("\nEnter the name of one of their albums: ")
-    print("enter 'q' at anytime to quit.")
-    if record_name == 'q':
-        break
-
-    songs = input('\nhow many songs are on that album?: ')
-    if songs == 'q':
+    title = input(title_prompt)
+    if title == 'quit':
         break
     
-    print(records)
+    artist = input(artist_prompt)
+    if artist == 'quit':
+        break
+    
+    number_of_songs = input(songs_prompt)
+    if number_of_songs == 'quit':
+        break
 
-make_album(any,any,any)
+    album = make_album(artist, title, number_of_songs)
+    print(album)
+
+print("\nThanks for responding!")
+
+
 
